@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Modern Kalori Hesaplayıcı</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <div class="current-language" id="current-language">
+            <img src="https://flagcdn.com/w20/tr.png" alt="Turkish" class="flag-icon">
+            <span>Türkçe</span>
+            <i class="fas fa-chevron-down ms-2"></i>
+        </div>
+        <div class="language-dropdown" id="language-dropdown">
+            <div class="language-option" data-lang="tr">
+                <img src="https://flagcdn.com/w20/tr.png" alt="Turkish" class="flag-icon">
+                <span>Türkçe</span>
+            </div>
+            <div class="language-option" data-lang="en">
+                <img src="https://flagcdn.com/w20/gb.png" alt="English" class="flag-icon">
+                <span>English</span>
+            </div>
+            <div class="language-option" data-lang="fr">
+                <img src="https://flagcdn.com/w20/fr.png" alt="French" class="flag-icon">
+                <span>Français</span>
+            </div>
+            <div class="language-option" data-lang="es">
+                <img src="https://flagcdn.com/w20/es.png" alt="Spanish" class="flag-icon">
+                <span>Español</span>
+            </div>
+            <div class="language-option" data-lang="ar">
+                <img src="https://flagcdn.com/w20/sa.png" alt="Arabic" class="flag-icon">
+                <span>العربية</span>
+            </div>
+            <div class="language-option" data-lang="he">
+                <img src="https://flagcdn.com/w20/il.png" alt="Hebrew" class="flag-icon">
+                <span>עברית</span>
+            </div>
+            <div class="language-option" data-lang="de">
+                <img src="https://flagcdn.com/w20/de.png" alt="German" class="flag-icon">
+                <span>Deutsch</span>
+            </div>
+            <div class="language-option" data-lang="it">
+                <img src="https://flagcdn.com/w20/it.png" alt="Italian" class="flag-icon">
+                <span>Italiano</span>
+            </div>
+            <div class="language-option" data-lang="ru">
+                <img src="https://flagcdn.com/w20/ru.png" alt="Russian" class="flag-icon">
+                <span>Русский</span>
+            </div>
+            <div class="language-option" data-lang="zh">
+                <img src="https://flagcdn.com/w20/cn.png" alt="Chinese" class="flag-icon">
+                <span>中文</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Left side with image -->
+            <div class="col-lg-6 d-none d-lg-block bg-image">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+                <div class="overlay-text">
+                    <span class="badge rounded-pill mb-3" data-i18n="smart-precise">Akıllı & Hassas</span>
+                    <h1 data-i18n="main-heading">Günlük <span class="text-primary" data-i18n="daily">Kalori</span> İhtiyacını Hesapla</h1>
+                    <p data-i18n="main-description">Kişisel verilerinize dayalı beslenme ihtiyaçlarınızı gelişmiş hesaplayıcımızla takip edin</p>
+                </div>
+            </div>
+            
+            <!-- Mobile header (visible only on small screens) -->
+            <div class="d-block d-lg-none mobile-header">
+                <div class="mobile-overlay-text">
+                    <span class="badge rounded-pill mb-2" data-i18n="smart-precise">Akıllı & Hassas</span>
+                    <h1 data-i18n="mobile-heading">Günlük <span data-i18n="daily">Kalori</span> İhtiyacını Hesapla</h1>
+                </div>
+            </div>
+            
+            <!-- Right side with calculator -->
+            <div class="col-lg-6 calculator-section">
+                <div class="calculator-container">
+                    <div class="text-center mb-4">
+                        <div class="icon-container">
+                            <i class="fas fa-calculator calculator-icon"></i>
+                        </div>
+                        <h2 data-i18n="calculator-title">Kalori Hesaplayıcı</h2>
+                        <p class="text-muted" data-i18n="calculator-subtitle">Günlük kaç kaloriye ihtiyacınız olduğunu öğrenin</p>
+                    </div>
+                    
+                    <form id="calorie-form">
+                        <div class="mb-4">
+                            <label for="gender" class="form-label" data-i18n="gender">Cinsiyet</label>
+                            <div class="gender-toggle">
+                                <input type="radio" class="btn-check" name="gender" id="male" value="male" checked>
+                                <label class="btn gender-btn" for="male"><i class="fas fa-mars me-2"></i><span data-i18n="male">Erkek</span></label>
+                                
+                                <input type="radio" class="btn-check" name="gender" id="female" value="female">
+                                <label class="btn gender-btn" for="female"><i class="fas fa-venus me-2"></i><span data-i18n="female">Kadın</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="age" class="form-label" data-i18n="age">Yaş</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="age" placeholder="" required min="15" max="100">
+                                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                </div>
+                                <div class="invalid-feedback" data-i18n="age-error">Lütfen geçerli bir yaş girin (15-100)</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="height" class="form-label" data-i18n="height">Boy</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="height" placeholder="cm" required min="120" max="250">
+                                    <span class="input-group-text"><i class="fas fa-ruler-vertical"></i></span>
+                                </div>
+                                <div class="invalid-feedback" data-i18n="height-error">Lütfen geçerli bir boy girin (120-250 cm)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <label for="weight" class="form-label" data-i18n="weight">Kilo</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="weight" placeholder="kg" required min="30" max="300">
+                                    <span class="input-group-text"><i class="fas fa-weight"></i></span>
+                                </div>
+                                <div class="invalid-feedback" data-i18n="weight-error">Lütfen geçerli bir kilo girin (30-300 kg)</div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="activity" class="form-label" data-i18n="activity-level">Aktivite Seviyesi</label>
+                                <select class="form-select" id="activity" required>
+                                    <option value="1.2" data-i18n="sedentary">Hareketsiz</option>
+                                    <option value="1.375" selected data-i18n="lightly-active">Az Hareketli</option>
+                                    <option value="1.55" data-i18n="moderately-active">Orta Hareketli</option>
+                                    <option value="1.725" data-i18n="very-active">Çok Hareketli</option>
+                                    <option value="1.9" data-i18n="extremely-active">Aşırı Hareketli</option>
+                                </select>
+                                <div class="form-text"><i class="fas fa-info-circle me-1"></i> <span data-i18n="activity-info">Günlük egzersizinize göre</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="goal" class="form-label" data-i18n="goal">Hedef</label>
+                            <div class="goals-container">
+                                <input type="radio" class="btn-check" name="goal" id="lose" value="lose" checked>
+                                <label class="btn goal-btn" for="lose">
+                                    <i class="fas fa-arrow-down me-2"></i><span data-i18n="lose-weight">Kilo Vermek</span>
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="goal" id="maintain" value="maintain">
+                                <label class="btn goal-btn" for="maintain">
+                                    <i class="fas fa-equals me-2"></i><span data-i18n="maintain">Korumak</span>
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="goal" id="gain" value="gain">
+                                <label class="btn goal-btn" for="gain">
+                                    <i class="fas fa-arrow-up me-2"></i><span data-i18n="gain-weight">Kilo Almak</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 py-3 mb-4">
+                            <span data-i18n="calculate-button">Kalorileri Hesapla</span>
+                            <i class="fas fa-calculator ms-2"></i>
+                        </button>
+                    </form>
+                    
+                    <div id="result" class="result-container d-none">
+                        <div class="result-header">
+                            <h3 data-i18n="result-heading">Günlük Kalori İhtiyacınız</h3>
+                            <button id="recalculate" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-redo"></i> <span class="d-none d-sm-inline" data-i18n="recalculate">Yeniden Hesapla</span>
+                            </button>
+                        </div>
+                        
+                        <div class="row text-center">
+                            <div class="col-md-4 mb-3">
+                                <div class="result-card">
+                                    <div class="result-icon">
+                                        <i class="fas fa-fire-alt"></i>
+                                    </div>
+                                    <h5 data-i18n="bmr">Bazal Metabolizma Hızı</h5>
+                                    <p id="bmr-value" class="result-value">0</p>
+                                    <p class="result-unit" data-i18n="calories-per-day">kalori/gün</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="result-card primary">
+                                    <div class="result-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <h5 data-i18n="maintenance-calories">Koruma Kalorisi</h5>
+                                    <p id="maintenance-value" class="result-value">0</p>
+                                    <p class="result-unit" data-i18n="calories-per-day">kalori/gün</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="result-card">
+                                    <div class="result-icon">
+                                        <i class="fas fa-bullseye"></i>
+                                    </div>
+                                    <h5 data-i18n="goal-calories">Hedef Kalorisi</h5>
+                                    <p id="goal-value" class="result-value">0</p>
+                                    <p class="result-unit" data-i18n="calories-per-day">kalori/gün</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="nutrition-breakdown mt-4">
+                            <h4 data-i18n="macronutrients">Önerilen Makrobesinler</h4>
+                            <div class="progress-container">
+                                <label><span data-i18n="protein">Protein</span> (30%)</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span id="protein-grams">0g</span>
+                                    <span id="protein-calories">0 kal</span>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-container">
+                                <label><span data-i18n="carbs">Karbonhidrat</span> (45%)</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 45%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span id="carbs-grams">0g</span>
+                                    <span id="carbs-calories">0 kal</span>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-container">
+                                <label><span data-i18n="fats">Yağlar</span> (25%)</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 25%"></div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span id="fats-grams">0g</span>
+                                    <span id="fats-calories">0 kal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4 mb-3">
+                    <small class="text-muted">&copy; 2023 <span data-i18n="copyright">Modern Kalori Hesaplayıcı. Tüm hakları saklıdır.</span></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Translation Script -->
+    <script src="translations.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html> 
